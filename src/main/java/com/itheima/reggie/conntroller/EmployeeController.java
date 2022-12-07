@@ -20,7 +20,7 @@ import java.time.LocalDateTime;
  * @author HGD
  * @create 2022-11-28 16:16
  */
-@Api(tags = "员工登录退出服务")
+@Api(tags = "员工相关服务")
 @Slf4j
 @RestController
 @RequestMapping("/employee")
@@ -101,8 +101,17 @@ public class EmployeeController {
         return R.success("新增员工成功");
     }
 
+    /**
+     * 员工信息分页查询
+     * @param page
+     * @param pageSize
+     * @param name
+     * @return
+     */
+    @ApiOperation("分页查询")
     @GetMapping("/page")
     public R<Page> page(int page,int pageSize,String name){
+        log.info("page = {},pageSize = {},name = {}",page,pageSize,name);
         //1.构造分页构造器
         Page pageInfo = new Page(page, pageSize);
 
